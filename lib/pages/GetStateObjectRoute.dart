@@ -57,6 +57,12 @@ class _GetStateObjectRouteState extends State<GetStateObjectRoute> {
                 child: const Text('globalKey打开抽屉菜单'),
               );
             }),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.red,
+                  border: Border.all(color: Colors.black, width: 1)),
+              child: const Text('我是Container'),
+            )
           ],
         ),
       ),
