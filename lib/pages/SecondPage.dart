@@ -11,6 +11,8 @@ class SecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 获取路由参数
+    final args = ModalRoute.of(context)!.settings.arguments as Map;
     return Scaffold(
       appBar: AppBar(
         title: const Text('第二页'),

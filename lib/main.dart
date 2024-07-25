@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demos/pages/FirstPage.dart';
 import 'package:flutter_demos/pages/GetStateObjectRoute.dart';
@@ -38,6 +39,34 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      routes: {
+        'getStateObject': (context) => const GetStateObjectRoute(),
+        'secondPage': (context) => const SecondPage(),
+        'firstPage': (context) => const FirstPage(),
+        '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
+      },
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(builder: (context) {
+          //// 如果访问的路由页需要登录，但当前未登录，则直接返回登录页路由，
+          //        // 引导用户登录；其他情况则正常打开路由。
+          if (settings.name == '/') {
+            return const MyHomePage(title: 'Flutter Demo Home Page');
+          } else if (settings.name == 'getStateObject') {
+            return const GetStateObjectRoute();
+          } else if (settings.name == 'secondPage') {
+            return const SecondPage();
+          } else if (settings.name == 'firstPage') {
+            return const FirstPage();
+          } else {
+            return const Scaffold(
+              body: Center(
+                child: Text('404'),
+              ),
+            );
+          }
+        });
+      },
     );
   }
 }
@@ -74,10 +103,17 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
     //   // called again, and so nothing would appear to happen.
     //   _counter++;
     // });
-
-    Navigator.push(context, MaterialPageRoute(builder: (context){
-      return const GetStateObjectRoute();
+    // 路由导航--非命名路由方式
+    var result = Navigator.push(context, MaterialPageRoute(builder: (context){
+      return const FirstPage();
     }));
+
+    if (kDebugMode) {
+      print("路由返回结果：$result");
+    }
+
+    // 路由导航--命名路由方式
+    Navigator.pushNamed(context, 'secondPage', arguments: '我是参数');
   }
 
   Future<String> getData() async{
@@ -161,6 +197,12 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'getStateObject');
+              },
+              child: const Text('GetStateObjectRoute'),
             ),
           ],
         ),

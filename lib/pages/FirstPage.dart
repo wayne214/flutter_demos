@@ -14,12 +14,16 @@ class FirstPage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            ElevatedButton(
+                onPressed: () => {Navigator.pop(context, "我是返回值")},
+                child: const Text('返回')),
+
             const Padding(padding: EdgeInsets.all(10.0), child: Row(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
 
-               Image(
+                Image(
                   image: AssetImage('images/iceberg.jpg'),
                   width: 78,
                   height: 78,
@@ -62,8 +66,10 @@ class FirstPage extends StatelessWidget {
 
             Container(
               margin: const EdgeInsets.only(top: 50.0, left: 120.0),
-              constraints: const BoxConstraints.tightFor(width: 200.0, height: 150.0),//卡片大小
-              decoration: const BoxDecoration(  //背景装饰
+              constraints: const BoxConstraints.tightFor(
+                  width: 200.0, height: 150.0),
+              //卡片大小
+              decoration: const BoxDecoration( //背景装饰
                 gradient: RadialGradient( //背景径向渐变
                   colors: [Colors.red, Colors.orange],
                   center: Alignment.topLeft,
@@ -78,8 +84,10 @@ class FirstPage extends StatelessWidget {
                   )
                 ],
               ),
-              transform: Matrix4.rotationZ(.2),//卡片倾斜变换
-              alignment: Alignment.center, //卡片内文字居中
+              transform: Matrix4.rotationZ(.2),
+              //卡片倾斜变换
+              alignment: Alignment.center,
+              //卡片内文字居中
               child: const Text(
                 //卡片文字
                 "5.20", style: TextStyle(color: Colors.white, fontSize: 40.0),
