@@ -143,6 +143,9 @@ class FirstPage extends StatelessWidget {
               label: const Text("详情"),
               onPressed: () {},
             ),
+
+            Image.asset('images/iceberg.jpg', width: 80,),
+            Image.network('https://avatars2.githubusercontent.com/u/20411648?s=460&v=4', width: 80,),
           ],
         ));
   }
