@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demos/pages/FirstPage.dart';
 import 'package:flutter_demos/pages/GetStateObjectRoute.dart';
 import 'package:flutter_demos/pages/SecondPage.dart';
+import 'package:flutter_demos/pages/ThirdPage.dart';
 
 void collectLog(String line){
   //收集日志
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
         'getStateObject': (context) => const GetStateObjectRoute(),
         'secondPage': (context) => const SecondPage(),
         'firstPage': (context) => const FirstPage(),
+        'thirdPage': (context) => const ThirdPage(),
         // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
       },
       onGenerateRoute: (settings) {
@@ -234,18 +236,18 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 400, child: Text(listData),),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            // SizedBox(height: 400, child: Text(listData),),
+            // Text(
+            //   '$_counter',
+            //   style: Theme.of(context).textTheme.headlineMedium,
+            // ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'getStateObject');
+                Navigator.pushNamed(context, 'thirdPage');
               },
-              child: const Text('GetStateObjectRoute'),
+              child: const Text('跳转页面'),
             ),
           ],
         ),
