@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -7,8 +8,50 @@ import 'package:flutter_demos/pages/FirstPage.dart';
 import 'package:flutter_demos/pages/GetStateObjectRoute.dart';
 import 'package:flutter_demos/pages/SecondPage.dart';
 
+void collectLog(String line){
+  //收集日志
+}
+void reportErrorAndLog(FlutterErrorDetails details){
+  //上报错误和日志逻辑
+}
+
+FlutterErrorDetails makeDetails(Object obj, StackTrace stack){
+  // 构建错误信息
+  return FlutterErrorDetails(
+    exception: obj,
+    stack: stack,
+    library: 'Flutter Demo',
+    context: ErrorDescription('测试错误'),
+    informationCollector: () sync* {
+      yield ErrorSummary()
+    }
+  );
+}
+
 void main() {
-  runApp(const MyApp());
+  // 捕获异常
+  var onError = FlutterError.onError;
+  FlutterError.onError = (details) {
+    onError?.call(details);
+    if (kDebugMode) {
+      reportErrorAndLog(details);
+      // reportError(details);
+    }
+  };
+  // 捕获异常
+  runZoned(()=> runApp(const MyApp()), zoneSpecification: ZoneSpecification(
+    // 拦截print
+    print: (self, parent, zone,line) {
+      collectLog(line);
+      parent.print(zone, line);
+    },
+      //拦截未处理的异步错误
+    handleUncaughtError: (self, parent, zone, error, stack) {
+      // reportErrorAndLog(details);
+      parent.print(zone, '${error.toString()}} $stack');
+    }
+  ));
+
 }
 
 class MyApp extends StatelessWidget {
