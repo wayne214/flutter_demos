@@ -23,7 +23,7 @@ FlutterErrorDetails makeDetails(Object obj, StackTrace stack){
     library: 'Flutter Demo',
     context: ErrorDescription('测试错误'),
     informationCollector: () sync* {
-      yield ErrorSummary()
+      yield ErrorSummary("错误");
     }
   );
 }
@@ -87,7 +87,7 @@ class MyApp extends StatelessWidget {
         'getStateObject': (context) => const GetStateObjectRoute(),
         'secondPage': (context) => const SecondPage(),
         'firstPage': (context) => const FirstPage(),
-        '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
+        // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
       },
       onGenerateRoute: (settings) {
         return MaterialPageRoute(builder: (context) {
@@ -156,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
     }
 
     // 路由导航--命名路由方式
-    Navigator.pushNamed(context, 'secondPage', arguments: '我是参数');
+    // Navigator.pushNamed(context, 'secondPage', arguments: '我是参数');
   }
 
   Future<String> getData() async{
