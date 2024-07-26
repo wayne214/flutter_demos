@@ -9,7 +9,8 @@ class ThirdPage extends StatefulWidget {
   State<ThirdPage> createState() => _ThirdPageState();
 }
 
-class _ThirdPageState extends State<ThirdPage> {
+class _ThirdPageState extends State<ThirdPage>
+    with SingleTickerProviderStateMixin {
   bool _switchSelected = true; //维护单选开关状态
   bool _checkboxSelected = true; //维护复选框状态
 
@@ -18,9 +19,21 @@ class _ThirdPageState extends State<ThirdPage> {
 
   final GlobalKey _formKey = GlobalKey<FormState>();
 
+  late AnimationController _animationController;
+
   @override
   void initState() {
     // TODO: implement initState
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
+
+    _animationController.forward();
+    _animationController.addListener(() {
+      setState(() {});
+    });
+
     super.initState();
     _nameController.text = "hello world!";
     _nameController.selection = TextSelection(
@@ -130,7 +143,9 @@ class _ThirdPageState extends State<ThirdPage> {
                                     .validate()) {
                                   if (kDebugMode) {
                                     print("登录成功");
-                                    Fluttertoast.showToast(msg: '登录成功', gravity: ToastGravity.CENTER);
+                                    Fluttertoast.showToast(
+                                        msg: '登录成功',
+                                        gravity: ToastGravity.CENTER);
                                   }
                                 }
                               },
@@ -147,7 +162,14 @@ class _ThirdPageState extends State<ThirdPage> {
                       ),
                     )
                   ],
-                ))
+                )),
+            Padding(
+                padding: const EdgeInsets.all(16),
+                child: LinearProgressIndicator(
+                    backgroundColor: Colors.grey[200],
+                    value: _animationController.value,
+                    valueColor: ColorTween(begin: Colors.grey, end: Colors.blue)
+                        .animate(_animationController)))
           ],
         ));
   }
