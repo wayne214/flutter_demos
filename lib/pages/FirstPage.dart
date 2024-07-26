@@ -127,6 +127,22 @@ class FirstPage extends StatelessWidget {
                       style: TextStyle(color: Colors.blue)),
                 ]
             )),
+
+            ElevatedButton.icon(
+              icon: const Icon(Icons.send),
+              label: const Text("发送"),
+              onPressed: (){},
+            ),
+            OutlinedButton.icon(
+              icon: const Icon(Icons.add),
+              label: const Text("添加"),
+              onPressed: (){},
+            ),
+            TextButton.icon(
+              icon: const Icon(Icons.info),
+              label: const Text("详情"),
+              onPressed: () {},
+            ),
           ],
         ));
   }
