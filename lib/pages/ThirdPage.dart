@@ -73,6 +73,15 @@ class _ThirdPageState extends State<ThirdPage>
         ]),
         body: Column(
           children: [
+            Flex(direction: Axis.horizontal,
+              children: [
+                Expanded(
+                    flex: 1, child: Container(height: 30, color: Colors.red,)),
+                Expanded(
+                    flex: 2, child: Container(height: 30, color: Colors.green,))
+              ],),
+
+
             ConstrainedBox(
               constraints: const BoxConstraints(minWidth: double.infinity),
               child: const Column(
