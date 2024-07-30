@@ -59,11 +59,27 @@ class _ThirdPageState extends State<ThirdPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Third Page"),
-        ),
+        appBar: AppBar(title: const Text("Third Page"), actions: const [
+          UnconstrainedBox(
+            child: SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 3,
+                valueColor: AlwaysStoppedAnimation(Colors.red),
+              ),
+            ),
+          )
+        ]),
         body: Column(
           children: [
+            ConstrainedBox(
+              constraints: const BoxConstraints(minWidth: double.infinity),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [Text("hi"), Text("world")],
+              ),
+            ),
             Switch(
                 value: _switchSelected,
                 onChanged: (value) {
