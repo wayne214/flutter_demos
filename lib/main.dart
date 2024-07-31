@@ -8,6 +8,7 @@ import 'package:flutter_demos/pages/DecoratedPage.dart';
 import 'package:flutter_demos/pages/FirstPage.dart';
 import 'package:flutter_demos/pages/FourPage.dart';
 import 'package:flutter_demos/pages/GetStateObjectRoute.dart';
+import 'package:flutter_demos/pages/ScaffoldPage.dart';
 import 'package:flutter_demos/pages/SecondPage.dart';
 import 'package:flutter_demos/pages/ThirdPage.dart';
 
@@ -93,6 +94,7 @@ class MyApp extends StatelessWidget {
         'thirdPage': (context) => const ThirdPage(),
         'fourPage': (context) => const FourPage(),
         'decoratedPage': (context) => const DecoratedPage(),
+        'scaffoldPage': (context) => const ScaffoldPage(),
         // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
       },
       onGenerateRoute: (settings) {
@@ -249,7 +251,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
             // ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'decoratedPage');
+                Navigator.pushNamed(context, 'scaffoldPage');
               },
               child: const Text('跳转页面'),
             ),

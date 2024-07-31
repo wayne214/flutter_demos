@@ -20,8 +20,10 @@ class MyDrawer extends StatelessWidget {
                       padding: const EdgeInsets.all(16.0),
                       child: ClipOval(
                         child: Image.asset(
-                          'images/iceberg.png',
+                          'images/iceberg.jpg',
                           width: 80,
+                          height: 80,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
