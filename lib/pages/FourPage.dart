@@ -68,6 +68,16 @@ class _FourPageState extends State<FourPage> {
               ),
             ],
           ),
+
+          Container(
+            height: 120,
+            width: 120,
+            color: Colors.blue.shade50,
+            child: const Align(
+              alignment: Alignment.topRight,
+              child: FlutterLogo(size: 60),
+            ),
+          )
         ],
       ),)
 
