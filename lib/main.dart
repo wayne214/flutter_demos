@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demos/pages/AnimatedListPage.dart';
 import 'package:flutter_demos/pages/DecoratedPage.dart';
 import 'package:flutter_demos/pages/FirstPage.dart';
 import 'package:flutter_demos/pages/FourPage.dart';
@@ -97,6 +98,7 @@ class MyApp extends StatelessWidget {
         'decoratedPage': (context) => const DecoratedPage(),
         'scaffoldPage': (context) => const ScaffoldPage(),
         'scrollablePage': (context) => const ScrollablePage(),
+        'animatedListPage': (context) => const AnimatedListPage(),
         // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
       },
       onGenerateRoute: (settings) {
@@ -253,7 +255,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
             // ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'scrollablePage');
+                Navigator.pushNamed(context, 'animatedListPage');
               },
               child: const Text('跳转页面'),
             ),
