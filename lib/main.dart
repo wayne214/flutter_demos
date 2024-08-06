@@ -10,6 +10,7 @@ import 'package:flutter_demos/pages/DialogPage.dart';
 import 'package:flutter_demos/pages/FirstPage.dart';
 import 'package:flutter_demos/pages/FourPage.dart';
 import 'package:flutter_demos/pages/GetStateObjectRoute.dart';
+import 'package:flutter_demos/pages/HttpRequestPage.dart';
 import 'package:flutter_demos/pages/InfiniteGridView.dart';
 import 'package:flutter_demos/pages/NestedTabBarView.dart';
 import 'package:flutter_demos/pages/ScaffoldPage.dart';
@@ -105,6 +106,7 @@ class MyApp extends StatelessWidget {
         'infiniteGridview': (context) => const InfiniteGridview(),
         'nestedTabBarView': (context) => const NestedTabBarView(),
         'dialogPage': (context) => const DialogPage(),
+        'httpRequestPage': (context) => const HttpRequestPage(),
         // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
       },
       onGenerateRoute: (settings) {
@@ -261,7 +263,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
             // ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'dialogPage');
+                Navigator.pushNamed(context, 'httpRequestPage');
               },
               child: const Text('跳转页面'),
             ),
