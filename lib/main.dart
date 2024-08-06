@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demos/pages/AnimatedListPage.dart';
 import 'package:flutter_demos/pages/DecoratedPage.dart';
 import 'package:flutter_demos/pages/DialogPage.dart';
+import 'package:flutter_demos/pages/DioRequestPage.dart';
 import 'package:flutter_demos/pages/FirstPage.dart';
 import 'package:flutter_demos/pages/FourPage.dart';
 import 'package:flutter_demos/pages/GetStateObjectRoute.dart';
@@ -107,6 +108,7 @@ class MyApp extends StatelessWidget {
         'nestedTabBarView': (context) => const NestedTabBarView(),
         'dialogPage': (context) => const DialogPage(),
         'httpRequestPage': (context) => const HttpRequestPage(),
+        'dioRequestPage': (context) => const DioRequestPage(),
         // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
       },
       onGenerateRoute: (settings) {
@@ -263,7 +265,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
             // ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'httpRequestPage');
+                Navigator.pushNamed(context, 'dioRequestPage');
               },
               child: const Text('跳转页面'),
             ),
