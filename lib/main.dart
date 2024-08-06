@@ -6,10 +6,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demos/pages/AnimatedListPage.dart';
 import 'package:flutter_demos/pages/DecoratedPage.dart';
+import 'package:flutter_demos/pages/DialogPage.dart';
 import 'package:flutter_demos/pages/FirstPage.dart';
 import 'package:flutter_demos/pages/FourPage.dart';
 import 'package:flutter_demos/pages/GetStateObjectRoute.dart';
 import 'package:flutter_demos/pages/InfiniteGridView.dart';
+import 'package:flutter_demos/pages/NestedTabBarView.dart';
 import 'package:flutter_demos/pages/ScaffoldPage.dart';
 import 'package:flutter_demos/pages/ScrollablePage.dart';
 import 'package:flutter_demos/pages/SecondPage.dart';
@@ -101,6 +103,8 @@ class MyApp extends StatelessWidget {
         'scrollablePage': (context) => const ScrollablePage(),
         'animatedListPage': (context) => const AnimatedListPage(),
         'infiniteGridview': (context) => const InfiniteGridview(),
+        'nestedTabBarView': (context) => const NestedTabBarView(),
+        'dialogPage': (context) => const DialogPage(),
         // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
       },
       onGenerateRoute: (settings) {
@@ -257,7 +261,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
             // ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'infiniteGridview');
+                Navigator.pushNamed(context, 'dialogPage');
               },
               child: const Text('跳转页面'),
             ),
