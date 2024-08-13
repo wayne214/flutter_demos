@@ -18,6 +18,7 @@ import 'package:flutter_demos/pages/ScaffoldPage.dart';
 import 'package:flutter_demos/pages/ScrollablePage.dart';
 import 'package:flutter_demos/pages/SecondPage.dart';
 import 'package:flutter_demos/pages/ThirdPage.dart';
+import 'package:flutter_demos/pages/WebSocketPage.dart';
 
 void collectLog(String line){
   //收集日志
@@ -109,6 +110,7 @@ class MyApp extends StatelessWidget {
         'dialogPage': (context) => const DialogPage(),
         'httpRequestPage': (context) => const HttpRequestPage(),
         'dioRequestPage': (context) => const DioRequestPage(),
+        'webSocketPage': (context) => const WebSocketPage(),
         // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
       },
       onGenerateRoute: (settings) {
@@ -265,7 +267,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
             // ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'decoratedPage');
+                Navigator.pushNamed(context, 'webSocketPage');
               },
               child: const Text('跳转页面'),
             ),
