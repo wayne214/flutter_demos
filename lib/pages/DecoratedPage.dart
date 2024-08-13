@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demos/pages/SingleLineFittedBox.dart';
 
 class DecoratedPage extends StatefulWidget {
   const DecoratedPage({super.key});
@@ -52,9 +53,23 @@ class _DecoratedPageState extends State<DecoratedPage> {
           // wContainer(BoxFit.contain),
           // const Text('Flutter中国')
 
+          // wRow(' 9000000000000000 '),
+          SingleLineFittedBox(child: wRow(' 9000000000000000 '),),
+          wRow(' 800 '),
+          SingleLineFittedBox(child: wRow(' 800 '),)
+
         ],
       ),
     );
+  }
+
+  Widget wRow(String text){
+    Widget child = Text(text);
+    child = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [child, child, child],
+    );
+    return child;
   }
 
   Widget wContainer(BoxFit boxFit) {
