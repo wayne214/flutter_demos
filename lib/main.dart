@@ -17,6 +17,7 @@ import 'package:flutter_demos/pages/NestedTabBarView.dart';
 import 'package:flutter_demos/pages/ScaffoldPage.dart';
 import 'package:flutter_demos/pages/ScrollablePage.dart';
 import 'package:flutter_demos/pages/SecondPage.dart';
+import 'package:flutter_demos/pages/SocketPage.dart';
 import 'package:flutter_demos/pages/ThirdPage.dart';
 import 'package:flutter_demos/pages/WebSocketPage.dart';
 
@@ -111,6 +112,7 @@ class MyApp extends StatelessWidget {
         'httpRequestPage': (context) => const HttpRequestPage(),
         'dioRequestPage': (context) => const DioRequestPage(),
         'webSocketPage': (context) => const WebSocketPage(),
+        'socketPage': (context) => const SocketPage(),
         // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
       },
       onGenerateRoute: (settings) {
@@ -267,7 +269,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
             // ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'webSocketPage');
+                Navigator.pushNamed(context, 'socketPage');
               },
               child: const Text('跳转页面'),
             ),
