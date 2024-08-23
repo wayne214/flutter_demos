@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demos/net_article/views/net_article_page.dart';
 
 import '../muyu/muyu_page.dart';
 import 'app_bottom_bar.dart';
@@ -44,6 +45,8 @@ class _AppNavigationState extends State<AppNavigation> {
       children: const [
           MuyuPage(),
           MuyuPage(),
+          NetArticlePage(),
+          NetArticlePage(),
       ],
     );
   }
