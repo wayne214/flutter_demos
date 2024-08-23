@@ -3,10 +3,11 @@ class ImageOption {
   final String src;
   final int min;
   final int max;
-  const ImageOption({
-    required this.name,
-    required this.src,
-    required this.min,
-    required this.max,
-  });
+
+  const ImageOption(
+    this.name,
+    this.src,
+    this.min,
+    this.max,
+  );
 }
