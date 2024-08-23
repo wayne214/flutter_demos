@@ -21,6 +21,8 @@ import 'package:flutter_demos/pages/SocketPage.dart';
 import 'package:flutter_demos/pages/ThirdPage.dart';
 import 'package:flutter_demos/pages/WebSocketPage.dart';
 
+import 'navigation/app_navigation.dart';
+
 void collectLog(String line){
   //收集日志
 }
@@ -94,27 +96,28 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const AppNavigation(),
       initialRoute: '/',
-      routes: {
-        'getStateObject': (context) => const GetStateObjectRoute(),
-        'secondPage': (context) => const SecondPage(),
-        'firstPage': (context) => const FirstPage(),
-        'thirdPage': (context) => const ThirdPage(),
-        'fourPage': (context) => const FourPage(),
-        'decoratedPage': (context) => const DecoratedPage(),
-        'scaffoldPage': (context) => const ScaffoldPage(),
-        'scrollablePage': (context) => const ScrollablePage(),
-        'animatedListPage': (context) => const AnimatedListPage(),
-        'infiniteGridview': (context) => const InfiniteGridview(),
-        'nestedTabBarView': (context) => const NestedTabBarView(),
-        'dialogPage': (context) => const DialogPage(),
-        'httpRequestPage': (context) => const HttpRequestPage(),
-        'dioRequestPage': (context) => const DioRequestPage(),
-        'webSocketPage': (context) => const WebSocketPage(),
-        'socketPage': (context) => const SocketPage(),
-        // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
-      },
+      // routes: {
+      //   'getStateObject': (context) => const GetStateObjectRoute(),
+      //   'secondPage': (context) => const SecondPage(),
+      //   'firstPage': (context) => const FirstPage(),
+      //   'thirdPage': (context) => const ThirdPage(),
+      //   'fourPage': (context) => const FourPage(),
+      //   'decoratedPage': (context) => const DecoratedPage(),
+      //   'scaffoldPage': (context) => const ScaffoldPage(),
+      //   'scrollablePage': (context) => const ScrollablePage(),
+      //   'animatedListPage': (context) => const AnimatedListPage(),
+      //   'infiniteGridview': (context) => const InfiniteGridview(),
+      //   'nestedTabBarView': (context) => const NestedTabBarView(),
+      //   'dialogPage': (context) => const DialogPage(),
+      //   'httpRequestPage': (context) => const HttpRequestPage(),
+      //   'dioRequestPage': (context) => const DioRequestPage(),
+      //   'webSocketPage': (context) => const WebSocketPage(),
+      //   'socketPage': (context) => const SocketPage(),
+      //   // '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
+      // },
       onGenerateRoute: (settings) {
         return MaterialPageRoute(builder: (context) {
           //// 如果访问的路由页需要登录，但当前未登录，则直接返回登录页路由，
