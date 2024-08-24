@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_demos/pages/AnimatedListPage.dart';
 import 'package:flutter_demos/pages/DecoratedPage.dart';
 import 'package:flutter_demos/pages/DialogPage.dart';
@@ -95,6 +96,21 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: Brightness.dark,
+          ),
+          backgroundColor: Colors.white,
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+          iconTheme: IconThemeData(color: Colors.black),
+        )
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       home: const AppNavigation(),

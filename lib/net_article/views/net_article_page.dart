@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demos/net_article/views/article_content.dart';
 
 class NetArticlePage extends StatelessWidget {
   const NetArticlePage({super.key});
@@ -9,9 +10,7 @@ class NetArticlePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('网络文章'),
       ),
-      body: const Center(
-        child: Text('网络文章'),
-      )
+      body: const ArticleContent(),
     );
   }
 }

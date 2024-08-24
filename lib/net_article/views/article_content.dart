@@ -1,4 +1,5 @@
 import 'package:easy_refresh/easy_refresh.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demos/net_article/api/article_api.dart';
 import 'package:flutter_demos/net_article/model/article.dart';
@@ -34,6 +35,22 @@ class _ArticleContentState extends State<ArticleContent> {
 
   @override
   Widget build(BuildContext context) {
+    if (_loading) {
+      return const Center(
+          child: Wrap(
+        spacing: 10,
+        direction: Axis.vertical,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          CupertinoActivityIndicator(),
+          Text(
+            '数据加载中，请稍后...',
+            style: TextStyle(color: Colors.grey),
+          )
+        ],
+      ));
+    }
+
     return EasyRefresh(
         header: const ClassicHeader(
           dragText: '下载加载',
@@ -52,8 +69,9 @@ class _ArticleContentState extends State<ArticleContent> {
         ));
   }
 
-  void _jumpToPage(Article article){
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ArticleDetailPage(article: article)));
+  void _jumpToPage(Article article) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => ArticleDetailPage(article: article)));
   }
 
   void _onRefresh() async {
@@ -62,11 +80,73 @@ class _ArticleContentState extends State<ArticleContent> {
   }
 
   void _onLoadMore() async {
-    _articles = await api.getArticles(0);
+    int nextPage = _articles.length ~/ 20;
+    List<Article> newList = await api.getArticles(nextPage);
+    _articles.addAll(newList);
     setState(() {});
   }
 
   Widget _buildItemByIndex(BuildContext context, int index) {
-    return Text("data");
+    return ArticleItem(article: _articles[index], onTap: _jumpToPage);
+  }
+}
+
+class ArticleItem extends StatelessWidget {
+  final Article article;
+  final ValueChanged<Article> onTap;
+
+  const ArticleItem({super.key, required this.article, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => onTap(article),
+      child: Card(
+        elevation: 0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                      child: Text(
+                    article.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w500),
+                  )),
+                ],
+              ),
+              const SizedBox(height: 4),
+             
+              Expanded(
+                  child: Row(
+                children: [
+                  Text('作者：${article.author}',
+                      style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text('分类：${article.superChapterName}',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style:
+                            const TextStyle(fontSize: 12, color: Colors.grey)),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text('时间：${article.time}',
+                      style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                ],
+              )),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

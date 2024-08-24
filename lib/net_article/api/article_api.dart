@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 import '../model/article.dart';
 
@@ -11,6 +12,11 @@ class ArticleApi {
     String path = '/article/list/$page/json';
 
     var rep = await _client.get(path);
+
+    if (kDebugMode) {
+      print("网络数据：$rep");
+    }
+
     if(rep.statusCode == 200){
       if(rep.data != null) {
         var data = rep.data['data']['datas'] as List;
