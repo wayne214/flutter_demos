@@ -8,6 +8,7 @@ import 'package:flutter_demos/muyu/count_panel.dart';
 import 'package:flutter_demos/muyu/models/audio_option.dart';
 import 'package:flutter_demos/muyu/muyu_app_bar.dart';
 import 'package:flutter_demos/muyu/options/select_audio.dart';
+import 'package:flutter_demos/storage/db_storage/db_storage.dart';
 import 'package:uuid/uuid.dart';
 
 import '../storage/sp_storage.dart';
@@ -61,6 +62,7 @@ class _MuyuPageState extends State<MuyuPage> {
     _counter = config['count'] ?? 0;
     _activeImageIndex = config['activeImageIndex'] ?? 0;
     _activeAudioIndex = config['activeImageIndex'] ?? 0;
+    _records = await DbStorage.instance.meritRecordDao.query();
     setState(() {
 
     });
@@ -115,6 +117,7 @@ class _MuyuPageState extends State<MuyuPage> {
       );
       _counter += _cruRecord!.value;
       saveConfig();
+      DbStorage.instance.meritRecordDao.insert(_cruRecord!);
       _records.add(_cruRecord!);
     });
   }
