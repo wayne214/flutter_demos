@@ -5,9 +5,11 @@ const String kGuessSpKey = 'guess-config';
 const String kMuYUSpKey = 'muyu-config';
 
 class SpStorage {
-  SpStorage._();
+  // 单例模式
+  SpStorage._(); // 私有化构造
 
   static SpStorage? _instance;
+  // 提供实例对象的访问途径
   static SpStorage get instance => _instance ??= SpStorage._();
 
   SharedPreferences? _sp;
